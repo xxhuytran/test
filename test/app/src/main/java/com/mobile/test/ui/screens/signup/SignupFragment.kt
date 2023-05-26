@@ -75,6 +75,14 @@ class SignupFragment: BaseFragment() {
     }
 
     private fun observerViewModel() {
+        mViewModel.isSignUpSuccess.observe(viewLifecycleOwner) {
+            it?.let {
+                if (it) {
+                    mViewModel.navigate(SignupFragmentDirections.actionSignupFragmentToCategoriesFragment())
+                }
+            }
+        }
+
         mViewModel.isEnableSignUp.observe(viewLifecycleOwner) {
             it?.let {
                 if (it) {

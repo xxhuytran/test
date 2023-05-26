@@ -39,48 +39,6 @@ open class BaseViewModel: ViewModel() {
         _navigationCommands.postValue(NavigationCommand.To(directions))
     }
 
-    /**
-     * Pop back stack to previous fragment
-     */
-    fun popBackStack(){
-        _navigationCommands.postValue(NavigationCommand.Back)
-    }
-
-    /**
-     * Pop back stack to a destination fragment
-     */
-    fun popBackStack(@IdRes destinationId: Int, inclusive: Boolean){
-        _navigationCommands.postValue(NavigationCommand.BackTo(destinationId, inclusive))
-    }
-
-    /**
-     * Pop back stack to a destination fragment
-     */
-    fun popBackStack(@IdRes destinationId: Int){
-        _navigationCommands.postValue(NavigationCommand.BackTo(destinationId))
-    }
-
-    /**
-     * Pop to root fragment
-     */
-    fun popToRoot(inclusive: Boolean = false){
-        _navigationCommands.postValue(NavigationCommand.ToRoot(inclusive))
-    }
-
-    /**
-     * Start new activity
-     */
-    fun <T> startActivity(activityName: Class<T>, bundle: Bundle?, isFinishedCurrentActivity: Boolean = true){
-        _navigationCommands.postValue(NavigationCommand.StartActivity(activityName, bundle, isFinishedCurrentActivity))
-    }
-
-    /**
-     * Start new activity
-     */
-    fun <T> startActivity(activityName: Class<T>, isFinishedCurrentActivity: Boolean = true){
-        _navigationCommands.postValue(NavigationCommand.StartActivity(activityName, null, isFinishedCurrentActivity))
-    }
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()

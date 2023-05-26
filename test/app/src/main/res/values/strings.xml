@@ -15,4 +15,9 @@
     <string name="sign_up_password_good">Good</string>
     <string name="sign_up_password_strong">Strong</string>
     <string name="sign_up_password_too_long">Too long</string>
+
+
+    <string name="categories_welcome_to_flutter_test">Welcome to Flutter Test</string>
+    <string name="categories_desc">Please select categories what you would like to see on your feed. You can set this later on Filter.</string>
+    <string name="done">Done</string>
 </resources>

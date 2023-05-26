@@ -15,6 +15,7 @@ class SignupViewModel: BaseViewModel() {
     var isShowLoginPassword = MutableLiveData<Boolean>()
     var passwordLevel = MutableLiveData<Int>()
     var isEnableSignUp = MutableLiveData<Boolean>()
+    var isSignUpSuccess = MutableLiveData<Boolean>()
 
     init {
         email.value = ""
@@ -23,10 +24,7 @@ class SignupViewModel: BaseViewModel() {
         isEnableSignUp.value = false
         isShowLoginPassword.value = false
         passwordLevel.value = 0
-
-        if (prefs.getLocalSimpleData<SignUpResponseModel>(SharedPrefs.User) != null) {
-            val user = prefs.getLocalSimpleData<SignUpResponseModel>(SharedPrefs.User) as SignUpResponseModel
-        }
+        isSignUpSuccess.value = false
     }
 
     fun onCheckEnableSignUp() {
@@ -79,13 +77,13 @@ class SignupViewModel: BaseViewModel() {
             password.value ?: ""
         )
         coroutineScope.launch {
-            showLoadingIndicator()
             val signupDeferred = appService.signupAsync(requestModel)
             try {
+                showLoadingIndicator()
                 val response = signupDeferred.await()
                 prefs.saveLocalSimpleData(SharedPrefs.User, response)
-
                 hideLoadingIndicator()
+                navigate(SignupFragmentDirections.actionSignupFragmentToCategoriesFragment())
             } catch (e: Exception) {
                 Log.d("Exception", e.localizedMessage)
                 hideLoadingIndicator()

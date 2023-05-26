@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="category"
+            type="com.mobile.test.model.response.CategoryModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="4dp"
+        android:background="@{category.isSelected ? @drawable/bg_selected_category : @drawable/bg_category}">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:text="@{category.name}"
+            android:textColor="@color/white"
+            android:fontFamily="@font/lato_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Relationships"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

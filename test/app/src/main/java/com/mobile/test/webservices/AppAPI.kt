@@ -14,6 +14,12 @@ import java.util.concurrent.TimeUnit
 interface AppAPI {
     @POST("/api/auth/signup")
     fun signupAsync(@Body requestBody: SignUpRequestModel): Deferred<SignUpResponseModel>
+
+    @GET("/api/categories")
+    fun getCategoriesAsync(
+        @Query("pageSize") pageSize: Int,
+        @Query("pageNumber") pageNumber: Int,
+    ): Deferred<CategoryResponseModel>
 }
 
 object AppNetwork {
@@ -28,6 +34,7 @@ object AppNetwork {
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .callTimeout(TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor {chain -> this.getResponseWithCache(chain)}
+            .addInterceptor(AuthInterceptor())
             .build()
 
         Retrofit.Builder().baseUrl(BASE_URL)

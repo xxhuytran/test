@@ -3,13 +3,30 @@ package com.mobile.test.utils
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.mobile.test.model.response.SignUpResponseModel
 
 class SharedPrefs(context: Context) {
     val preferences: SharedPreferences = context.getSharedPreferences("SavePreferences", Context.MODE_PRIVATE)
 
     companion object {
-        const val User = "User"
+        const val User = "user"
+        const val SelectedCategory = "selected_category"
+    }
+
+    fun saveList(key: String, list: List<Any>) {
+        val editor = preferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(list)
+        editor.putString(key, json)
+        editor.apply()
+    }
+
+    fun getList(key: String): List<Any>? {
+        val gson = Gson()
+        val json = preferences.getString(key, null)
+        val type = object : TypeToken<List<Any>>(){}.type
+        return gson.fromJson(json, type)
     }
 
     fun saveLocalSimpleData(key: String, value: Any) {

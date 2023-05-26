@@ -9,5 +9,13 @@
         android:name="com.mobile.test.ui.screens.signup.SignupFragment"
         android:label="signupFragment"
         tools:layout="@layout/signup_fragment">
+        <action
+            android:id="@+id/action_signupFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.mobile.test.ui.screens.categories.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/categories_fragment"/>
 </navigation>

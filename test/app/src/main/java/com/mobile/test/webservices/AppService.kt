@@ -5,4 +5,5 @@ import com.mobile.test.webservices.AppNetwork.appApi
 
 class AppService {
     fun signupAsync(signupRequestModel: SignUpRequestModel) = appApi.signupAsync(signupRequestModel)
+    fun getCategoriesAsync(pageSize: Int, pageNumber: Int) = appApi.getCategoriesAsync(pageSize, pageNumber)
 }
