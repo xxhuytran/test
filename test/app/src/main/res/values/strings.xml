@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">test</string>
+
+    <string name="sign_up_get_started">Let’s get you started!</string>
+    <string name="sign_up_your_email">Your email</string>
+    <string name="sign_up_your_password">Your password</string>
+    <string name="sign_up_over_16s">I am over 16 years of age</string>
+    <string name="sign_up_by_click_sign_up">By clicking Sign Up, you are indicating that you have read and agree to the Terms of Service and Privacy Policy</string>
+    <string name="term_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="sign_up_button_sign_up">Sign Up</string>
+    <string name="sign_up_password_too_short">Too short</string>
+    <string name="sign_up_password_week">Week</string>
+    <string name="sign_up_password_fair">Fair</string>
+    <string name="sign_up_password_good">Good</string>
+    <string name="sign_up_password_strong">Strong</string>
+    <string name="sign_up_password_too_long">Too long</string>
 </resources>
